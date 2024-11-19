@@ -5,12 +5,10 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>Tienda_bootleg</name>
             <source-roots>
-                <root id="src.java51.dir" name="Tienda.java"/>
-                <root id="src.resources51.dir" name="Tienda.resources"/>
-                <root id="src.java51.dir" name="Tienda.java"/>
-                <root id="src.resources51.dir" name="Tienda.resources"/>
-                <root id="src.java51.dir" name="Tienda.java"/>
-                <root id="src.resources51.dir" name="Tienda.resources"/>
+                <root id="src.java550.dir" name="Tienda.java"/>
+                <root id="src.resources550.dir" name="Tienda.resources"/>
+                <root id="src.java550.dir" name="Tienda.java"/>
+                <root id="src.resources550.dir" name="Tienda.resources"/>
             </source-roots>
             <test-roots/>
         </data>

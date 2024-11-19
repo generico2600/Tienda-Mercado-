@@ -1,6 +1,7 @@
 module com.example.tienda {
     requires javafx.controls;
     requires javafx.fxml;
+    requires de.jensd.fx.glyphs.materialdesignicons;
     requires MaterialFX;
 
     opens com.example.tienda to javafx.fxml;
