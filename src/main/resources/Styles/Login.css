@@ -1,0 +1,50 @@
+.login_container {
+    -fx-background-color: #EEEEEE;
+    -fx-alignment: center;
+    -fx-padding: 2em;
+    -fx-spacing: 15;
+}
+
+.section_header {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-spacing: 5em;
+}
+
+.regis_container {
+    -fx-background-color: #AAAAAA;
+    -fx-alignment: center;
+    -fx-padding: 2em;
+    -fx-background-radius: 10%;
+    -fx-spacing: 15;
+}
+
+.ui_button {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.1em;
+}
+
+.ui_button:hover {
+    -fx-background-color: #303030;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+}
+
+.text_field {
+    -fx-background-color: #FFFFFF;
+    -fx-pref-height: 35;
+    -fx-font-size: 1.2em;
+}
+
+.text_link {
+    -fx-text-fill: #57d8ff;
+    -fx-underline: true;
+}
+
+.text_link:hover {
+    -fx-text-fill: #57d;
+    -fx-underline: false;
+    -fx-cursor: hand;
+}

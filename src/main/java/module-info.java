@@ -5,4 +5,7 @@ module com.example.tienda {
 
     opens com.example.tienda to javafx.fxml;
     exports com.example.tienda;
+    exports com.example.tienda.controllers;
+    exports com.example.tienda.models;
+    exports com.example.tienda.views;
 }
