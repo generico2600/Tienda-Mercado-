@@ -1,0 +1,11 @@
+.catalog_button {
+    -fx-background-color: #afa696;
+    -fx-text-fill: #FE346B;
+    -fx-font-size: 1.1em;
+    -fx-pref-height: 30;
+    -fx-alignment: center;
+}
+
+.catalog_button:hover {
+    -fx-cursor: hand;
+}
