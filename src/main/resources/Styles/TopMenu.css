@@ -7,6 +7,10 @@
     -fx-pref-width: 200;
 }
 
+.menu_button:hover {
+    -fx-cursor: hand;
+}
+
 .search_bar {
     -fx-background-color: #FFFFFF;
     -fx-font-size: 1.3em;

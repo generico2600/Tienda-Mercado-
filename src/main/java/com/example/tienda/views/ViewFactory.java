@@ -41,7 +41,7 @@ public class ViewFactory {
     }
 
     public void showCatalogView() {
-        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/Catalog.fxml"));
+        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
         Scene scene = null;
 
         try {
