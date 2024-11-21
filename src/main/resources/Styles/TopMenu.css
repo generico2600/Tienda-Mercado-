@@ -11,9 +11,44 @@
     -fx-cursor: hand;
 }
 
+.search_outline {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-alignment: center;
+    -fx-padding: 0 10 0 10;;
+}
+
 .search_bar {
     -fx-background-color: #FFFFFF;
     -fx-font-size: 1.3em;
     -fx-pref-height: 40;
     -fx-pref-width: 500;
+    -fx-alignment: center;
+}
+
+.search_pane {
+    -fx-alignment: center;
+    -fx-padding: 0 70 0 70;
+}
+
+.left_icon {
+    -fx-spacing: 1.8em;
+    -fx-alignment: center;
+}
+
+.right_icon {
+    -fx-spacing: 1.8em;
+    -fx-alignment: center;
+}
+
+.clickable {
+    -fx-cursor: hand;
+}
+
+.top_part {
+    -fx-background-color: #312828;
+}
+
+.bot_part {
+    -fx-background-color: #dfd6c5;
 }
