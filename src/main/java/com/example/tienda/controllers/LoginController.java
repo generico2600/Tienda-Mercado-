@@ -3,10 +3,7 @@ package com.example.tienda.controllers;
 import com.example.pruebas.Usuario;
 import com.example.tienda.models.Model;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -24,11 +21,12 @@ public class LoginController implements Initializable {
     public TextField regis_pass_fld;
     public Label login_status_lbl;
     public Label regis_status_lbl;
+    public CheckBox cbIsAdmin;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        login_btn.setOnAction(event -> onLogin());
-        regis_btn.setOnAction(event -> onRegister());
+        login_btn.setOnAction(_ -> onLogin());
+        regis_btn.setOnAction(_ -> onRegister());
     }
 
     private void onLogin() {
@@ -66,7 +64,7 @@ public class LoginController implements Initializable {
             return;
         }
 
-        registrarUsuario(username, password);
+        registrarUsuario(username, password, cbIsAdmin.isSelected());
 
         // No debería fallar, pero...
         if (isUserExists(username)) {
@@ -77,8 +75,7 @@ public class LoginController implements Initializable {
     }
 
     // TODO: Controller propio?
-    private void registrarUsuario(String username, String password) {
-        boolean isAdmin = false; // TODO
+    private void registrarUsuario(String username, String password, boolean isAdmin) {
         String email = ""; // TODO
 
         if (isUserExists(username)) {
@@ -125,7 +122,7 @@ public class LoginController implements Initializable {
                     return true;
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException _) {
 
         }
         return false;

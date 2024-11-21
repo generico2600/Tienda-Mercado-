@@ -16,7 +16,7 @@ public class ViewFactory {
     public AnchorPane getLoginView() {
         if (loginView == null) {
             try {
-                loginView = new FXMLLoader(getClass().getResource("/Fxml/LoginSplash.fxml")).load();
+                loginView = new FXMLLoader(getClass().getResource("/Fxml/LoginRegis.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -25,7 +25,7 @@ public class ViewFactory {
     }
 
     public void showLoginView() {
-        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/LoginSplash.fxml"));
+        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/LoginRegis.fxml"));
         Scene scene = null;
 
         try {
