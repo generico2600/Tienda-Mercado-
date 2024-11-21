@@ -1,5 +1,6 @@
 package com.example.tienda.controllers;
 
+import com.example.tienda.models.Model;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,6 +19,14 @@ public class TopMenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        addListener();
+    }
 
+    private void addListener() {
+        topbar_inicio_btn.setOnAction(_ -> onInicio());
+    }
+
+    private void onInicio() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Inicio");
     }
 }

@@ -1,5 +1,8 @@
 package com.example.tienda.views;
 
+import com.example.tienda.controllers.NavigationController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -9,9 +12,17 @@ import java.io.IOException;
 
 public class ViewFactory {
     // Vistas del cliente
+    private final StringProperty clientSelectedMenuItem;
     private AnchorPane loginView;
+    private AnchorPane catalogView;
 
-    public ViewFactory() {}
+    public ViewFactory() {
+        this.clientSelectedMenuItem = new SimpleStringProperty("");
+    }
+
+    public StringProperty getClienSelectedMenuItem() {
+        return clientSelectedMenuItem;
+    }
 
     public AnchorPane getLoginView() {
         if (loginView == null) {
@@ -22,6 +33,17 @@ public class ViewFactory {
             }
         }
         return loginView;
+    }
+
+    public AnchorPane getCatalogView() {
+        if (catalogView == null) {
+            try {
+                catalogView = new FXMLLoader(getClass().getResource("/Fxml/Catalog.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return catalogView;
     }
 
     public void showLoginView() {
@@ -41,7 +63,9 @@ public class ViewFactory {
     }
 
     public void showCatalogView() {
-        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
+        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/MainWindow.fxml"));
+        NavigationController cController = new NavigationController();
+        ipl.setController(cController);
         Scene scene = null;
 
         try {
