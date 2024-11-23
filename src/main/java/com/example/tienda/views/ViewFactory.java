@@ -15,6 +15,7 @@ public class ViewFactory {
     private final StringProperty clientSelectedMenuItem;
     private AnchorPane loginView;
     private AnchorPane catalogView;
+    private AnchorPane dashboardView;
 
     public ViewFactory() {
         this.clientSelectedMenuItem = new SimpleStringProperty("");
@@ -22,6 +23,17 @@ public class ViewFactory {
 
     public StringProperty getClienSelectedMenuItem() {
         return clientSelectedMenuItem;
+    }
+
+    public AnchorPane getDashboardView() {
+        if (dashboardView == null) {
+            try {
+                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dashboardView;
     }
 
     public AnchorPane getLoginView() {
@@ -46,6 +58,24 @@ public class ViewFactory {
         return catalogView;
     }
 
+    public void showDashboardView() {
+        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/MainWindow.fxml"));
+        NavigationController cController = new NavigationController();
+        ipl.setController(cController);
+        Scene scene = null;
+
+        try {
+            scene = new Scene(ipl.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Papelería Clips&Shapes");
+        stage.show();
+    }
+
     public void showLoginView() {
         FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/LoginRegis.fxml"));
         Scene scene = null;
@@ -64,8 +94,6 @@ public class ViewFactory {
 
     public void showCatalogView() {
         FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/MainWindow.fxml"));
-        NavigationController cController = new NavigationController();
-        ipl.setController(cController);
         Scene scene = null;
 
         try {

@@ -13,8 +13,9 @@ public class NavigationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Model.getInstance().getViewFactory().getClienSelectedMenuItem().addListener(((observable, oldValue, newValue) -> {
             switch(newValue){
-                case "Inicio" -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCatalogView());
-                default -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCatalogView());
+                case "Inicio" -> main_canvas.setCenter(Model.getInstance().getViewFactory().getDashboardView());
+                case "Catalogo" -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCatalogView());
+                default -> main_canvas.setCenter(Model.getInstance().getViewFactory().getDashboardView());
             }
         }));
     }

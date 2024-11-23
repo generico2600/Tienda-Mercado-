@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.DashboardController">
+    <Pane layoutY="383.0" prefHeight="157.0" prefWidth="1100.0" styleClass="body_color_accent" />
+    <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="12.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" styleClass="drop_shadow">
+        <Image url="@../Img/dash-hero.png" />
+    </ImageView>
+    <Button fx:id="catalog_btn" layoutX="747.0" layoutY="288.0" mnemonicParsing="false" styleClass="menu_button" text="Ir al catálogo" />
+    <Label fx:id="welcome_lbl" layoutX="729.0" layoutY="213.0" styleClass="sub_head" text="¡Bienvenido Usuario!" />
+    <VBox layoutX="265.0" layoutY="14.0" prefHeight="123.0" prefWidth="571.0" styleClass="title_box">
+        <HBox styleClass="title_box">
+            <Label styleClass="heading" text="Clips" textAlignment="CENTER" />
+            <Label styleClass="heading_alt" text="&amp;" textAlignment="CENTER" />
+            <Label styleClass="heading" text="Shapes" textAlignment="CENTER" />
+        </HBox>
+        <Label styleClass="heading" text="Donde Las Ideas Toman Forma" textAlignment="CENTER" />
+    </VBox>
+</AnchorPane>

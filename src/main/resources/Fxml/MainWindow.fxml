@@ -9,6 +9,6 @@
     </top>
 
     <center>
-        <fx:include source="Catalog.fxml"/>
+        <fx:include source="Dashboard.fxml"/>
     </center>
 </BorderPane>

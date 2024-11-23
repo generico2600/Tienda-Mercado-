@@ -1,6 +1,6 @@
 package com.example.tienda.controllers;
 
-import com.example.pruebas.Usuario;
+import com.example.tienda.models.Usuario;
 import com.example.tienda.models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -43,10 +43,13 @@ public class LoginController implements Initializable {
             return;
         }
 
-        if (validarUsuario(username, password) != null) {
+        Usuario loggedUser = validarUsuario(username, password);
+
+        if (loggedUser != null) {
+            Model.getInstance().setCurrentUser(loggedUser);
             Stage stage = (Stage) login_btn.getScene().getWindow();
             Model.getInstance().getViewFactory().closeStage(stage);
-            Model.getInstance().getViewFactory().showCatalogView();
+            Model.getInstance().getViewFactory().showDashboardView();
         }
     }
 
