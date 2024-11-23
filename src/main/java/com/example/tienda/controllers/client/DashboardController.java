@@ -1,4 +1,4 @@
-package com.example.tienda.controllers;
+package com.example.tienda.controllers.client;
 
 import com.example.tienda.models.Model;
 import javafx.fxml.Initializable;

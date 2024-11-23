@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="170.0" stylesheets="@../Styles/ProductCard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.CatalogProductCellController">
+<AnchorPane prefHeight="250.0" prefWidth="170.0" stylesheets="@../Styles/ProductCard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogProductCellController">
     <Label fx:id="product_name_lbl" layoutX="14.0" layoutY="185.0" styleClass="label_t" text="Nombre">
         <font>
           <Font size="16.0" />

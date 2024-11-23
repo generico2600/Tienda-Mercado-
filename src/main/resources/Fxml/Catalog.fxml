@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Catalog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.CatalogController">
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Catalog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogController">
    <Pane prefHeight="540.0" prefWidth="1100.0">
       <Label layoutX="21.0" layoutY="487.0" text="Here goes pretty UI">
          <font>
