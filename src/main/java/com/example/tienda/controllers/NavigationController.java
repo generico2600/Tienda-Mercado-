@@ -15,7 +15,7 @@ public class NavigationController implements Initializable {
             switch(newValue){
                 case "Inicio" -> main_canvas.setCenter(Model.getInstance().getViewFactory().getDashboardView());
                 case "Catalogo" -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCatalogView());
-                default -> main_canvas.setCenter(Model.getInstance().getViewFactory().getDashboardView());
+                default -> main_canvas.setCenter(Model.getInstance().getViewFactory().getWipView());
             }
         }));
     }

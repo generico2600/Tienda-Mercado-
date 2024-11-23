@@ -24,9 +24,29 @@ public class TopMenuController implements Initializable {
 
     private void addListener() {
         topbar_inicio_btn.setOnAction(_ -> onInicio());
+        topbar_usuario_icon.setOnMouseClicked(_ -> onUser());
+        topbar_historial_btn.setOnAction(_ -> onHistorial());
+        topbar_deseados_btn.setOnAction(_ -> onDeseados());
+        topbar_cart_icon.setOnMouseClicked(_ -> onCarrito());
     }
 
     private void onInicio() {
         Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Inicio");
+    }
+
+    private void onUser() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Usuario");
+    }
+
+    private void onHistorial() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Historial");
+    }
+
+    private void onDeseados() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Deseados");
+    }
+
+    private void onCarrito() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Carrito");
     }
 }

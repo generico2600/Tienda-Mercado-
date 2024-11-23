@@ -58,6 +58,15 @@ public class ViewFactory {
         return catalogView;
     }
 
+    public AnchorPane getWipView() {
+        try {
+            return new FXMLLoader(getClass().getResource("/Fxml/WorkInProgress.fxml")).load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return catalogView;
+    }
+
     public void showDashboardView() {
         FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/MainWindow.fxml"));
         NavigationController cController = new NavigationController();

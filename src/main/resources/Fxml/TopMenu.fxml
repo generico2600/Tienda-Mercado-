@@ -22,7 +22,7 @@
          <left>
             <HBox prefHeight="100.0" prefWidth="180.0" styleClass="left_icon" BorderPane.alignment="CENTER">
                <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../Img/logo.png"/>
+                  <Image url="@../Img/logo.png" />
                </ImageView>
             </HBox>
          </left>
