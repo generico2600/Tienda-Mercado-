@@ -6,20 +6,17 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="250.0" prefWidth="170.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.tienda.controllers.CatalogProductCellController">
-    <Label fx:id="product_name_lbl" layoutX="14.0" layoutY="185.0" text="Nombre">
+<AnchorPane prefHeight="250.0" prefWidth="170.0" stylesheets="@../Styles/ProductCard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.CatalogProductCellController">
+    <Label fx:id="product_name_lbl" layoutX="14.0" layoutY="185.0" styleClass="label_t" text="Nombre">
         <font>
-          <Font size="16.0"/>
+          <Font size="16.0" />
         </font>
     </Label>
-    <MaterialDesignIconView glyphName="SHOPPING" layoutX="10.0" layoutY="145.0" size="150"/>
-    <Label fx:id="product_price_lbl" layoutX="14.0" layoutY="219.0" text="\$00.00">
+    <MaterialDesignIconView glyphName="SHOPPING" layoutX="10.0" layoutY="145.0" size="150" />
+    <Label fx:id="product_price_lbl" layoutX="14.0" layoutY="219.0" styleClass="label_t" text="\$00.00">
         <font>
-          <Font size="14.0"/>
+          <Font size="14.0" />
         </font>
     </Label>
-    <Line endX="100.0" layoutX="73.0" layoutY="178.0" startX="-73.0"/>
+    <Line endX="100.0" layoutX="73.0" layoutY="178.0" startX="-73.0" />
 </AnchorPane>

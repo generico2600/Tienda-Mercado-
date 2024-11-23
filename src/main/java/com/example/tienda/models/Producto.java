@@ -1,7 +1,6 @@
 package com.example.tienda.models;
 
 import javafx.beans.property.*;
-import javafx.collections.ObservableList;
 
 import java.util.List;
 
@@ -17,7 +16,8 @@ public class Producto {
         this.precio = new SimpleDoubleProperty(precio);
         this.cantidadEnStock = new SimpleIntegerProperty(cantidadEnStock);
         this.marca = new SimpleStringProperty(marca);
-        this.tags = new SimpleListProperty<String>((ObservableList<String>) tags);
+        // TODO: Esto no funciona -> this.tags = new SimpleListProperty<String>(tags);
+        this.tags = null;
     }
 
     @Override

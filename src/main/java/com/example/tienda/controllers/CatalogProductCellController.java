@@ -8,17 +8,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CatalogProductCellController implements Initializable {
-
-    private final Producto producto;
+    private Producto producto;
     public Label product_name_lbl;
     public Label product_price_lbl;
-
-    public CatalogProductCellController(Producto producto) {
-        this.producto = producto;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setData(Producto p) {
+        producto = p;
+        product_name_lbl.setText(p.getNombre().get());
+        product_price_lbl.setText("$" + p.getPrecio().get());
     }
 }

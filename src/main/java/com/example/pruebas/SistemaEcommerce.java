@@ -58,7 +58,7 @@ public class SistemaEcommerce {
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(USERS_FILE_PATH, true))) {
-            writer.write(username + "," + email + "," + password + "," + rol);
+            writer.write(username + "," + email + "," + password + "," + rol.equalsIgnoreCase("admin"));
             writer.newLine();
             System.out.println("Usuario registrado exitosamente.");
         } catch (IOException e) {
@@ -97,7 +97,7 @@ public class SistemaEcommerce {
             System.out.println("2. Ver lista de deseados");
             System.out.println("3. Agregar producto a lista de deseados");
             System.out.println("4. Comprar producto");
-            if (usuario.getRol().equalsIgnoreCase("admin")) {
+            if (usuario.getRol().equalsIgnoreCase("true")) {
                 System.out.println("5. Crear producto");
                 System.out.println("6. Modificar producto");
             }
@@ -122,12 +122,12 @@ public class SistemaEcommerce {
                     guardarProductosEnArchivo(historialFile, usuario.getHistorialCompras());
                     break;
                 case 5:
-                    if (usuario.getRol().equalsIgnoreCase("admin")) {
+                    if (usuario.getRol().equalsIgnoreCase("true")) {
                         crearProducto(scanner);
                     }
                     break;
                 case 6:
-                    if (usuario.getRol().equalsIgnoreCase("admin")) {
+                    if (usuario.getRol().equalsIgnoreCase("true")) {
                         modificarProducto(scanner);
                     }
                     break;
