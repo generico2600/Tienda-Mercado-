@@ -1,6 +1,7 @@
 package com.example.tienda.views;
 
 import com.example.tienda.controllers.NavigationController;
+import com.example.tienda.controllers.client.CatalogController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -8,14 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class ViewFactory {
     // Vistas del cliente
     private final StringProperty clientSelectedMenuItem;
     private AnchorPane loginView;
+    private AnchorPane userView;
     private AnchorPane catalogView;
     private AnchorPane dashboardView;
+    private AnchorPane agregarProductoView;
+    private CatalogController catalogController;
 
     public ViewFactory() {
         this.clientSelectedMenuItem = new SimpleStringProperty("");
@@ -50,11 +52,16 @@ public class ViewFactory {
     public AnchorPane getCatalogView() {
         if (catalogView == null) {
             try {
-                catalogView = new FXMLLoader(getClass().getResource("/Fxml/Catalog.fxml")).load();
+                FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/Catalog.fxml"));
+                catalogView = ipl.load();
+                catalogController = ipl.getController();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        // TODO: Usar listener u Observable List
+        catalogController.reloadData();
         return catalogView;
     }
 
@@ -65,6 +72,17 @@ public class ViewFactory {
             e.printStackTrace();
         }
         return catalogView;
+    }
+
+    public AnchorPane getAgregarProductoView() {
+        if (agregarProductoView == null) {
+            try {
+                agregarProductoView = new FXMLLoader(getClass().getResource("/Fxml/AgregarProducto.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return agregarProductoView;
     }
 
     public void showDashboardView() {
@@ -87,22 +105,6 @@ public class ViewFactory {
 
     public void showLoginView() {
         FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/LoginRegis.fxml"));
-        Scene scene = null;
-
-        try {
-            scene = new Scene(ipl.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Papelería Clips&Shapes");
-        stage.show();
-    }
-
-    public void showCatalogView() {
-        FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/MainWindow.fxml"));
         Scene scene = null;
 
         try {

@@ -9,15 +9,15 @@ public class Usuario {
     private String username;
     private String email;
     private String password;
-    private String rol;
+    private boolean isAdmin;
     private List<Producto> historialCompras;
     private List<Producto> listaDeseados;
 
-    public Usuario(String username, String email, String password, String rol) {
+    public Usuario(String username, String email, String password, boolean isAdmin) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.rol = rol;
+        this.isAdmin = isAdmin;
         this.historialCompras = new ArrayList<>();
         this.listaDeseados = new ArrayList<>();
     }
@@ -35,7 +35,7 @@ public class Usuario {
         return "Usuario{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", rol='" + rol + '\'' +
+                ", admin='" + isAdmin + '\'' +
                 ", historialCompras=" + historialCompras +
                 ", listaDeseados=" + listaDeseados +
                 '}';
@@ -66,12 +66,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRol() {
-        return rol;
+    public boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public List<Producto> getHistorialCompras() {

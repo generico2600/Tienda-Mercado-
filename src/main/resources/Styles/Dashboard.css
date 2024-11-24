@@ -12,7 +12,7 @@
     -fx-font-size: 1.3em;
     -fx-font-weight: bold;
     -fx-alignment: center;
-    -fx-pref-width: 200;
+    -fx-pref-width: 250;
 }
 
 .drop_shadow {
@@ -20,6 +20,11 @@
 }
 
 .title_box {
+    -fx-alignment: center;
+}
+
+.action_box {
+    -fx-spacing: 20px;
     -fx-alignment: center;
 }
 

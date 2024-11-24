@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
     public Button catalog_btn;
     public Label welcome_lbl;
+    public Button addItems_btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -20,9 +21,23 @@ public class DashboardController implements Initializable {
     private void addListener() {
         catalog_btn.setOnAction(_ -> onCatalog());
         welcome_lbl.setText("¡Bienvenido/a " + Model.getInstance().getCurrentUser().getUsername() + "!");
+
+        if (Model.getInstance().getCurrentUser().getIsAdmin()) {
+            addItems_btn.setVisible(true);
+            addItems_btn.setManaged(true);
+            addItems_btn.setOnAction(_ -> onAgregarProducto());
+        }
+        else {
+            addItems_btn.setVisible(false);
+            addItems_btn.setManaged(false);
+        }
     }
 
     private void onCatalog() {
         Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Catalogo");
+    }
+
+    private void onAgregarProducto() {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("AgregarProducto");
     }
 }

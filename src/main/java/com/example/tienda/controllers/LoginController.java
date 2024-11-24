@@ -50,6 +50,8 @@ public class LoginController implements Initializable {
             Stage stage = (Stage) login_btn.getScene().getWindow();
             Model.getInstance().getViewFactory().closeStage(stage);
             Model.getInstance().getViewFactory().showDashboardView();
+        } else {
+            login_status_lbl.setText("Error: Usuario y/o contraseña incorrectos.");
         }
     }
 
@@ -105,7 +107,7 @@ public class LoginController implements Initializable {
             while ((line = reader.readLine()) != null) {
                 String[] userDetails = line.split(",");
                 if (userDetails[0].equals(username) && userDetails[2].equals(password)) {
-                    return new Usuario(userDetails[0], userDetails[1], userDetails[2], userDetails[3]);
+                    return new Usuario(userDetails[0], userDetails[1], userDetails[2], Boolean.parseBoolean(userDetails[3]));
                 }
             }
         } catch (IOException e) {

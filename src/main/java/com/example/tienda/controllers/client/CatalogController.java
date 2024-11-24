@@ -25,6 +25,11 @@ public class CatalogController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // TODO: Usar listener u Observable (ver ViewFactory)
+        // reloadData();
+    }
+    
+    public void reloadData() {
         productos = new ArrayList<>();
         leerProductosDesdeArchivo();
 
@@ -38,9 +43,9 @@ public class CatalogController implements Initializable {
                 AnchorPane box = loader.load();
                 CatalogProductCellController controller = loader.getController();
                 controller.setData(productos.get(i));
-                if (column == 5) {
+                if (column == 4) {
                     column = 0;
-                    ++row;
+                    row++;
                 }
 
                 catalogGrid.add(box, column++, row);

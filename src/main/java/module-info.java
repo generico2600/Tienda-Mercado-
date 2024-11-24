@@ -10,4 +10,5 @@ module com.example.tienda {
     exports com.example.tienda.models;
     exports com.example.tienda.views;
     exports com.example.tienda.controllers.client;
+    exports com.example.tienda.controllers.admin;
 }

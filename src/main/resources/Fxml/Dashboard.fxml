@@ -5,23 +5,24 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.DashboardController">
     <Pane layoutY="383.0" prefHeight="157.0" prefWidth="1100.0" styleClass="body_color_accent" />
     <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="12.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" styleClass="drop_shadow">
         <Image url="@../Img/dash-hero.png" />
     </ImageView>
-    <Button fx:id="catalog_btn" layoutX="747.0" layoutY="288.0" mnemonicParsing="false" styleClass="menu_button" text="Ir al catálogo" />
-    <Label fx:id="welcome_lbl" layoutX="729.0" layoutY="213.0" styleClass="sub_head" text="¡Bienvenido Usuario!" />
-    <VBox layoutX="265.0" layoutY="14.0" prefHeight="123.0" prefWidth="571.0" styleClass="title_box">
-        <HBox styleClass="title_box">
-            <Label styleClass="heading" text="Clips" textAlignment="CENTER" />
-            <Label styleClass="heading_alt" text="&amp;" textAlignment="CENTER" />
-            <Label styleClass="heading" text="Shapes" textAlignment="CENTER" />
-        </HBox>
+    <TextFlow layoutX="262.0" layoutY="10.0" prefHeight="123.0" prefWidth="577.0" textAlignment="CENTER">
+        <Label styleClass="heading" text="Clips" textAlignment="CENTER" />
+        <Label styleClass="heading_alt" text="&amp;" textAlignment="CENTER" />
+        <Label styleClass="heading" text="Shapes" textAlignment="CENTER" />
         <Label styleClass="heading" text="Donde Las Ideas Toman Forma" textAlignment="CENTER" />
+    </TextFlow>
+    <VBox layoutX="664.0" layoutY="183.0" prefHeight="200.0" prefWidth="368.0" styleClass="action_box">
+        <Label fx:id="welcome_lbl" styleClass="sub_head" text="¡Bienvenido Usuario!" />
+        <Button fx:id="catalog_btn" mnemonicParsing="false" styleClass="menu_button" text="Ir al catálogo" />
+        <Button fx:id="addItems_btn" mnemonicParsing="false" styleClass="menu_button" text="Añadir Productos (admin)" />
     </VBox>
 </AnchorPane>
