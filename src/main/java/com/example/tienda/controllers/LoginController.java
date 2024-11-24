@@ -10,9 +10,9 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
-    private static final String USERS_FILE_PATH = "usuarios.txt";
+import static com.example.tienda.Constants.USERS_FILE_PATH;
 
+public class LoginController implements Initializable {
     public Button login_btn;
     public PasswordField login_pass_fld;
     public TextField login_user_fld;

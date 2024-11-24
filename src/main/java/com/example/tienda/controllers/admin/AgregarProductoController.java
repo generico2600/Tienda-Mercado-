@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.example.tienda.Constants.PRODUCTS_FILE_PATH;
+
 public class AgregarProductoController implements Initializable {
-    private static final String PRODUCTS_FILE_PATH = "productos.txt";
     public Spinner<Integer> stock_spn;
     public TextField nombreProducto_fld;
     public TextField precio_fld;
