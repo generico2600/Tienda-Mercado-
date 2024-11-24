@@ -1,0 +1,34 @@
+.body_color {
+    -fx-background-color: #dfd6c5;
+}
+
+.menu_button {
+    -fx-background-color: #afa696;
+    -fx-text-fill: #FE346B;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-pref-width: 250;
+}
+
+.text_bar {
+    -fx-background-color: #FFFFFF;
+    -fx-font-size: 1.3em;
+    -fx-pref-height: 35;
+}
+
+.outer_vbox {
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+}
+
+.inner_vbox {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+}
+
+.label_head {
+    -fx-text-fill: #000000;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
