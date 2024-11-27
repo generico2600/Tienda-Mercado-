@@ -1,6 +1,7 @@
 package com.example.tienda.controllers;
 
 import com.example.tienda.models.Model;
+import com.example.tienda.views.AppViewState;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,22 +32,22 @@ public class TopMenuController implements Initializable {
     }
 
     private void onInicio() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Inicio");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_INICIO);
     }
 
     private void onUser() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Usuario");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_USUARIO);
     }
 
     private void onHistorial() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Historial");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_HISTORIAL);
     }
 
     private void onDeseados() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Deseados");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_DESEADOS);
     }
 
     private void onCarrito() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Carrito");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_CARRITO);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.tienda.controllers.client;
 
 import com.example.tienda.models.Model;
+import com.example.tienda.views.AppViewState;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,10 +35,10 @@ public class DashboardController implements Initializable {
     }
 
     private void onCatalog() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("Catalogo");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_CATAlOGO);
     }
 
     private void onAgregarProducto() {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set("AgregarProducto");
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().set(AppViewState.VIEW_AGREGAR_PRODUCTO);
     }
 }

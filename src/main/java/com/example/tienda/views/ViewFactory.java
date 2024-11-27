@@ -2,8 +2,8 @@ package com.example.tienda.views;
 
 import com.example.tienda.controllers.NavigationController;
 import com.example.tienda.controllers.client.CatalogController;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class ViewFactory {
     // Vistas del cliente
-    private final StringProperty clientSelectedMenuItem;
+    private final ObjectProperty<AppViewState> clientSelectedMenuItem;
     private AnchorPane loginView;
     private AnchorPane userView;
     private AnchorPane catalogView;
@@ -20,10 +20,10 @@ public class ViewFactory {
     private CatalogController catalogController;
 
     public ViewFactory() {
-        this.clientSelectedMenuItem = new SimpleStringProperty("");
+        this.clientSelectedMenuItem = new SimpleObjectProperty<>(AppViewState.VIEW_INICIO);
     }
 
-    public StringProperty getClienSelectedMenuItem() {
+    public ObjectProperty<AppViewState> getClienSelectedMenuItem() {
         return clientSelectedMenuItem;
     }
 
