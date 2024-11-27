@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,28 +12,30 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Catalog.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogController">
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="bg_primary" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogController">
    <Pane prefHeight="540.0" prefWidth="1100.0">
-      <Button layoutX="21.0" layoutY="96.0" mnemonicParsing="false" prefWidth="143.0" styleClass="catalog_button" text="Filtro 1" />
-      <Button layoutX="21.0" layoutY="142.0" mnemonicParsing="false" prefWidth="143.0" styleClass="catalog_button" text="Filtro 2" />
-      <Button layoutX="21.0" layoutY="189.0" mnemonicParsing="false" prefWidth="143.0" styleClass="catalog_button" text="Filtro 3" />
-      <ScrollPane layoutX="273.0" layoutY="67.0" prefHeight="451.0" prefWidth="800.0" styleClass="scroll-box">
+      <Button layoutX="21.0" layoutY="96.0" mnemonicParsing="false" prefWidth="143.0" styleClass="button_base" text="Filtro 1" />
+      <Button layoutX="21.0" layoutY="142.0" mnemonicParsing="false" prefWidth="143.0" styleClass="button_base" text="Filtro 2" />
+      <Button layoutX="21.0" layoutY="189.0" mnemonicParsing="false" prefWidth="143.0" styleClass="button_base" text="Filtro 3" />
+      <ScrollPane layoutX="273.0" layoutY="67.0" prefHeight="451.0" prefWidth="800.0" styleClass="scroll_box_base">
          <GridPane fx:id="catalogGrid" prefHeight="0.0" prefWidth="0.0" styleClass="transparent" />
       </ScrollPane>
-      <Label layoutX="273.0" layoutY="22.0" text="Productos disponibles" textFill="#fe346b">
+      <Label layoutX="273.0" layoutY="22.0" styleClass="tx_highlight" text="Productos disponibles">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="26.0" text="Filtros (no impl)" textFill="#fe346b">
+      <Label layoutX="21.0" layoutY="26.0" styleClass="tx_highlight" text="Filtros (no impl)">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <ImageView fitHeight="118.0" fitWidth="235.0" layoutX="15.0" layoutY="418.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../Img/bg_1.png"/>
+      <ImageView fitHeight="118.0" fitWidth="235.0" layoutX="15.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Img/bg_1.png" />
       </ImageView>
       <Line endX="100.0" endY="207.0" layoutX="159.0" layoutY="315.0" startX="100.0" startY="-250.0" />
    </Pane>
+   <stylesheets>
+      <URL value="@../Styles/Common.css" />
+   </stylesheets>
 </AnchorPane>

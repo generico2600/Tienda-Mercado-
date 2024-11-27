@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,8 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/Dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.DashboardController">
-    <Pane layoutY="383.0" prefHeight="157.0" prefWidth="1100.0" styleClass="body_color_accent" />
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="bg_primary" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.DashboardController">
+    <Pane layoutY="383.0" prefHeight="157.0" prefWidth="1100.0" styleClass="bg_highlight" />
     <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="12.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" styleClass="drop_shadow">
         <Image url="@../Img/dash-hero.png" />
     </ImageView>
@@ -22,7 +24,19 @@
     </TextFlow>
     <VBox layoutX="664.0" layoutY="183.0" prefHeight="200.0" prefWidth="368.0" styleClass="action_box">
         <Label fx:id="welcome_lbl" styleClass="sub_head" text="¡Bienvenido Usuario!" />
-        <Button fx:id="catalog_btn" mnemonicParsing="false" styleClass="menu_button" text="Ir al catálogo" />
-        <Button fx:id="addItems_btn" mnemonicParsing="false" styleClass="menu_button" text="Añadir Productos (admin)" />
+        <Button fx:id="catalog_btn" mnemonicParsing="false" text="Ir al catálogo">
+         <styleClass>
+            <String fx:value="button_base" />
+            <String fx:value="menu_button" />
+         </styleClass></Button>
+        <Button fx:id="addItems_btn" mnemonicParsing="false" text="Añadir Productos (admin)">
+         <styleClass>
+            <String fx:value="button_base" />
+            <String fx:value="menu_button" />
+         </styleClass></Button>
     </VBox>
+   <stylesheets>
+      <URL value="@../Styles/Common.css" />
+      <URL value="@../Styles/Dashboard.css" />
+   </stylesheets>
 </AnchorPane>

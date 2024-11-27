@@ -1,17 +1,7 @@
-.body_color {
-    -fx-background-color: #dfd6c5;
-}
-
-.body_color_accent {
-    -fx-background-color: #FE346B;
-}
 
 .menu_button {
-    -fx-background-color: #afa696;
-    -fx-text-fill: #FE346B;
     -fx-font-size: 1.3em;
     -fx-font-weight: bold;
-    -fx-alignment: center;
     -fx-pref-width: 250;
 }
 

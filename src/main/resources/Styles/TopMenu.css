@@ -1,14 +1,7 @@
 .menu_button {
-    -fx-background-color: #afa696;
-    -fx-text-fill: #FE346B;
     -fx-font-size: 1.3em;
     -fx-font-weight: bold;
-    -fx-alignment: center;
     -fx-pref-width: 200;
-}
-
-.menu_button:hover {
-    -fx-cursor: hand;
 }
 
 .search_outline {
@@ -38,16 +31,4 @@
 .right_icon {
     -fx-spacing: 1.8em;
     -fx-alignment: center;
-}
-
-.clickable {
-    -fx-cursor: hand;
-}
-
-.top_part {
-    -fx-background-color: #312828;
-}
-
-.bot_part {
-    -fx-background-color: #dfd6c5;
 }

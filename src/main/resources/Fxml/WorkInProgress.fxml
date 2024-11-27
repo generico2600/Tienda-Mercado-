@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="body_color" stylesheets="@../Styles/WorkInProgress.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <Label layoutX="82.0" layoutY="44.0" text="ESTA PÁGINA AÚN NO HA SIDO IMPLEMENTADA" textFill="#fe346b">
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="bg_primary" stylesheets="@../Styles/Common.css" xmlns="http://javafx.com/javafx/23.0.1">
+   <Label layoutX="82.0" layoutY="44.0" styleClass="tx_highlight" text="ESTA PÁGINA AÚN NO HA SIDO IMPLEMENTADA">
       <font>
          <Font name="System Bold" size="40.0" />
       </font>
