@@ -27,7 +27,7 @@ public class AgregarProductoController implements Initializable {
 
     private void addListener() {
         stock_spn.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
-        agregar_btn.setOnAction(_ -> onAgregar());
+        agregar_btn.setOnAction(action -> onAgregar());
     }
 
     private Producto validarCampos() {

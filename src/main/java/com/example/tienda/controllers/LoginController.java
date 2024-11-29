@@ -25,8 +25,8 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        login_btn.setOnAction(_ -> onLogin());
-        regis_btn.setOnAction(_ -> onRegister());
+        login_btn.setOnAction(action -> onLogin());
+        regis_btn.setOnAction(action -> onRegister());
     }
 
     private void onLogin() {
@@ -127,7 +127,7 @@ public class LoginController implements Initializable {
                     return true;
                 }
             }
-        } catch (IOException _) {
+        } catch (IOException ignore) {
 
         }
         return false;

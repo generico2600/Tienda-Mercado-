@@ -24,11 +24,11 @@ public class TopMenuController implements Initializable {
     }
 
     private void addListener() {
-        topbar_inicio_btn.setOnAction(_ -> onInicio());
-        topbar_usuario_icon.setOnMouseClicked(_ -> onUser());
-        topbar_historial_btn.setOnAction(_ -> onHistorial());
-        topbar_deseados_btn.setOnAction(_ -> onDeseados());
-        topbar_cart_icon.setOnMouseClicked(_ -> onCarrito());
+        topbar_inicio_btn.setOnAction(action -> onInicio());
+        topbar_usuario_icon.setOnMouseClicked(action -> onUser());
+        topbar_historial_btn.setOnAction(action -> onHistorial());
+        topbar_deseados_btn.setOnAction(action -> onDeseados());
+        topbar_cart_icon.setOnMouseClicked(action -> onCarrito());
     }
 
     private void onInicio() {

@@ -3,6 +3,7 @@ module com.example.tienda {
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.materialdesignicons;
     requires MaterialFX;
+    requires java.logging;
 
     opens com.example.tienda to javafx.fxml;
     exports com.example.tienda;

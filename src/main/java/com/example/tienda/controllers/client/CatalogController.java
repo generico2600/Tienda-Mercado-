@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CatalogController implements Initializable {
     private static final String PRODUCTS_FILE_PATH = "productos.txt";
@@ -37,12 +39,12 @@ public class CatalogController implements Initializable {
         int row = 0;
 
         try {
-            for (int i = 0; i < productos.size(); i++) {
+            for (Producto producto : productos) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/fxml/CatalogProductCell.fxml"));
                 AnchorPane box = loader.load();
                 CatalogProductCellController controller = loader.getController();
-                controller.setData(productos.get(i));
+                controller.setData(producto);
                 if (column == 4) {
                     column = 0;
                     row++;
@@ -52,7 +54,7 @@ public class CatalogController implements Initializable {
                 GridPane.setMargin(box, new Insets(10));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -65,7 +67,7 @@ public class CatalogController implements Initializable {
                 Producto producto = new Producto(data[0], Double.parseDouble(data[1]), Integer.parseInt(data[2]), data[3], tags);
                 productos.add(producto);
             }
-        } catch (FileNotFoundException _) {
+        } catch (FileNotFoundException ignore) {
 
         } catch (IOException e) {
             System.out.println("Error al leer productos: " + e.getMessage());

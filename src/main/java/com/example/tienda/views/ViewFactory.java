@@ -9,6 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ViewFactory {
     // Vistas del cliente
     private final ObjectProperty<AppViewState> clientSelectedMenuItem;
@@ -32,7 +35,7 @@ public class ViewFactory {
             try {
                 dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml")).load();
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return dashboardView;
@@ -43,7 +46,7 @@ public class ViewFactory {
             try {
                 loginView = new FXMLLoader(getClass().getResource("/Fxml/LoginRegis.fxml")).load();
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return loginView;
@@ -56,7 +59,7 @@ public class ViewFactory {
                 catalogView = ipl.load();
                 catalogController = ipl.getController();
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
             }
         }
 
@@ -69,7 +72,7 @@ public class ViewFactory {
         try {
             return new FXMLLoader(getClass().getResource("/Fxml/WorkInProgress.fxml")).load();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
         }
         return catalogView;
     }
@@ -79,7 +82,7 @@ public class ViewFactory {
             try {
                 agregarProductoView = new FXMLLoader(getClass().getResource("/Fxml/AgregarProducto.fxml")).load();
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return agregarProductoView;
@@ -94,7 +97,7 @@ public class ViewFactory {
         try {
             scene = new Scene(ipl.load());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
         }
 
         Stage stage = new Stage();
@@ -110,7 +113,7 @@ public class ViewFactory {
         try {
             scene = new Scene(ipl.load());
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
         }
 
         Stage stage = new Stage();

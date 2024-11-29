@@ -20,13 +20,13 @@ public class DashboardController implements Initializable {
     }
 
     private void addListener() {
-        catalog_btn.setOnAction(_ -> onCatalog());
+        catalog_btn.setOnAction(action -> onCatalog());
         welcome_lbl.setText("¡Bienvenido/a " + Model.getInstance().getCurrentUser().getUsername() + "!");
 
         if (Model.getInstance().getCurrentUser().getIsAdmin()) {
             addItems_btn.setVisible(true);
             addItems_btn.setManaged(true);
-            addItems_btn.setOnAction(_ -> onAgregarProducto());
+            addItems_btn.setOnAction(action -> onAgregarProducto());
         }
         else {
             addItems_btn.setVisible(false);

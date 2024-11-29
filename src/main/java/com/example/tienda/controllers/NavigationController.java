@@ -11,7 +11,7 @@ public class NavigationController implements Initializable {
     public BorderPane main_canvas;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Model.getInstance().getViewFactory().getClienSelectedMenuItem().addListener(((_, _, newValue) -> {
+        Model.getInstance().getViewFactory().getClienSelectedMenuItem().addListener(((p, q, newValue) -> {
             switch(newValue){
                 case VIEW_INICIO -> main_canvas.setCenter(Model.getInstance().getViewFactory().getDashboardView());
                 case VIEW_CATAlOGO -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCatalogView());
