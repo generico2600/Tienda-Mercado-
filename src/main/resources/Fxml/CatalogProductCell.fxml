@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="170.0" stylesheets="@../Styles/ProductCard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogProductCellController">
-    <Label fx:id="product_name_lbl" layoutX="14.0" layoutY="185.0" styleClass="label_t" text="Nombre">
-        <font>
-          <Font size="16.0" />
-        </font>
-    </Label>
-    <MaterialDesignIconView glyphName="SHOPPING" layoutX="10.0" layoutY="145.0" size="150" />
-    <Label fx:id="product_price_lbl" layoutX="14.0" layoutY="219.0" styleClass="label_t" text="\$00.00">
-        <font>
-          <Font size="14.0" />
-        </font>
-    </Label>
-    <Line endX="100.0" layoutX="73.0" layoutY="178.0" startX="-73.0" />
+<AnchorPane prefHeight="250.0" prefWidth="150.0" style="-fx-background-radius: 15;" styleClass="bg_secondary" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogProductCellController">
+    <VBox layoutY="7.0" prefHeight="250.0" prefWidth="149.0" style="-fx-padding: 10; -fx-spacing: 10;" styleClass="content_pad">
+        <Pane minHeight="128.0" minWidth="128.0" prefHeight="128.0" prefWidth="128.0">
+            <ImageView fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../Img/no-image.png" />
+            </ImageView>
+        </Pane>
+        <Line endX="37.5" startX="-89.0" />
+        <Label fx:id="product_name_lbl" prefHeight="64.0" prefWidth="133.0" styleClass="label_t" text="Nombre" textAlignment="CENTER" wrapText="true">
+            <font>
+              <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="product_price_lbl" prefHeight="20.0" prefWidth="164.0" styleClass="label_t" text="\$00.00">
+            <font>
+              <Font size="14.0" />
+            </font>
+        </Label>
+    </VBox>
+   <stylesheets>
+      <URL value="@../Styles/ProductCard.css" />
+      <URL value="@../Styles/Common.css" />
+   </stylesheets>
 </AnchorPane>

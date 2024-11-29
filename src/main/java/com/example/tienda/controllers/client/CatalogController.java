@@ -4,6 +4,11 @@ import com.example.tienda.models.Producto;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -21,6 +26,13 @@ import java.util.logging.Logger;
 
 public class CatalogController implements Initializable {
     private static final String PRODUCTS_FILE_PATH = "productos.txt";
+    public Button agg_carro_btn;
+    public Spinner picker_spn;
+    public Label focus_prod_title_lbl;
+    public ImageView focus_prod_img;
+    public Label focus_prod_desc_lbl;
+    public Label focus_prod_stock_lbl;
+    public Label carro_status_lbl;
     private List<Producto> productos;
     public GridPane catalogGrid;
 
@@ -50,7 +62,16 @@ public class CatalogController implements Initializable {
                     row++;
                 }
 
+                // Set the cursor to 'HAND' on hover
+                box.setOnMouseEntered(event -> box.setCursor(Cursor.HAND));
+                box.setOnMouseExited(event -> box.setCursor(Cursor.DEFAULT));
+
                 catalogGrid.add(box, column++, row);
+                box.setUserData(producto);
+                box.setOnMouseClicked(event -> {
+                    Producto clickedProduct = (Producto) box.getUserData();
+                    System.out.println("Clicked product: " + clickedProduct);
+                });
                 GridPane.setMargin(box, new Insets(10));
             }
         } catch (Exception e) {
