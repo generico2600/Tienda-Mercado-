@@ -2,22 +2,19 @@ package com.example.tienda.models;
 
 import javafx.beans.property.*;
 
-import java.util.List;
-
 public class Producto {
     private final StringProperty nombre;
     private final DoubleProperty precio;
     private final IntegerProperty cantidadEnStock;
     private final StringProperty marca;
-    private final ListProperty<String> tags;
+    private final String imagePath;
 
-    public Producto(String nombre, double precio, int cantidadEnStock, String marca, List<String> tags) {
+    public Producto(String nombre, double precio, int cantidadEnStock, String marca, String imagePath) {
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleDoubleProperty(precio);
         this.cantidadEnStock = new SimpleIntegerProperty(cantidadEnStock);
         this.marca = new SimpleStringProperty(marca);
-        // TODO: Esto no funciona -> this.tags = new SimpleListProperty<String>(tags);
-        this.tags = null;
+        this.imagePath = imagePath;
     }
 
     @Override
@@ -27,7 +24,7 @@ public class Producto {
                 ", precio=" + precio +
                 ", cantidadEnStock=" + cantidadEnStock +
                 ", marca='" + marca + '\'' +
-                ", tags=" + tags +
+                ", img=" + imagePath +
                 '}';
     }
 
@@ -47,7 +44,7 @@ public class Producto {
         return marca;
     }
 
-    public ListProperty<String> getTags() {
-        return tags;
+    public String getImagePath() {
+        return imagePath;
     }
 }

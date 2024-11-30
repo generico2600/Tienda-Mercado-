@@ -48,6 +48,15 @@
     <ImageView fitHeight="507.0" fitWidth="586.0" layoutX="572.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../Img/dash-hero.png" />
     </ImageView>
+    <ImageView fx:id="product_img" fitHeight="200.0" fitWidth="200.0" layoutX="350.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../Img/no-image.png" />
+    </ImageView>
+   <Button fx:id="agregar_img_btn" layoutX="325.0" layoutY="260.0" mnemonicParsing="false" text="Buscar Imagen">
+      <styleClass>
+         <String fx:value="button_base" />
+         <String fx:value="menu_button" />
+      </styleClass>
+   </Button>
    <stylesheets>
       <URL value="@../Styles/Common.css" />
       <URL value="@../Styles/AgregarProducto.css" />

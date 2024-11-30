@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="250.0" prefWidth="150.0" style="-fx-background-radius: 15;" styleClass="bg_secondary" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.CatalogProductCellController">
     <VBox layoutY="7.0" prefHeight="250.0" prefWidth="149.0" style="-fx-padding: 10; -fx-spacing: 10;" styleClass="content_pad">
         <Pane minHeight="128.0" minWidth="128.0" prefHeight="128.0" prefWidth="128.0">
-            <ImageView fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="product_img" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../Img/no-image.png" />
             </ImageView>
         </Pane>
