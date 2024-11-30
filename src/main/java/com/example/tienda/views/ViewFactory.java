@@ -77,6 +77,15 @@ public class ViewFactory {
         return catalogView;
     }
 
+    public AnchorPane getCartView() {
+        try {
+            return new FXMLLoader(getClass().getResource("/Fxml/Cart.fxml")).load();
+        } catch (Exception e) {
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return catalogView;
+    }
+
     public AnchorPane getAgregarProductoView() {
         if (agregarProductoView == null) {
             try {
