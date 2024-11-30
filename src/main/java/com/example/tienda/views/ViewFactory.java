@@ -2,6 +2,7 @@ package com.example.tienda.views;
 
 import com.example.tienda.controllers.NavigationController;
 import com.example.tienda.controllers.client.CatalogController;
+import com.example.tienda.controllers.client.WishListController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -85,6 +86,20 @@ public class ViewFactory {
         }
         return catalogView;
     }
+
+    public AnchorPane getWishListView() {
+        try {
+            FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/WishList.fxml"));
+            AnchorPane p = ipl.load();
+            // TODO: Usar listener u Observable List
+            ((WishListController)ipl.getController()).reloadData();
+            return p;
+        } catch (Exception e) {
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return catalogView;
+    }
+
 
     public AnchorPane getAgregarProductoView() {
         if (agregarProductoView == null) {

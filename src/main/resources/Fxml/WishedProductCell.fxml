@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="170.0" maxWidth="470.0" minHeight="170.0" minWidth="470.0" prefHeight="170.0" prefWidth="470.0" stylesheets="@../Styles/Common.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.WishedProductCellController">
+    <Label fx:id="product_name_lbl" layoutX="173.0" layoutY="15.0" styleClass="label_t" text="Nombre">
+        <font>
+          <Font size="16.0" />
+        </font>
+    </Label>
+    <MaterialDesignIconView glyphName="SHOPPING" layoutX="6.0" layoutY="142.0" size="150" />
+    <Line endX="-75.0" endY="75.0" layoutX="234.0" layoutY="85.0" startX="-75.0" startY="-75.0" />
+   <MaterialDesignIconView fill="RED" glyphName="DELETE" layoutX="429.0" layoutY="37.0" size="24" />
+   <VBox layoutX="314.0" layoutY="65.0" prefHeight="93.0" prefWidth="142.0">
+      <children>
+          <Label fx:id="product_price_lbl" styleClass="label_t" text="\$00.00">
+              <font>
+                <Font size="14.0" />
+              </font>
+          </Label>
+         <Spinner prefHeight="25.0" prefWidth="112.0" />
+         <Button mnemonicParsing="false" text="Agregar Al Carrito" />
+      </children>
+   </VBox>
+</AnchorPane>
