@@ -44,7 +44,9 @@ public class UserRepository {
     }
 
     public boolean userExists(String username) {
-        return loadUsers().stream().anyMatch(user -> user.getUsername().equals(username));
+        // Los archivos en windows (por defecto) no son sensibles a las mayúsculas
+        // así que lógicamente implica que nuestros nombre de usuario tampoco lo son
+        return loadUsers().stream().anyMatch(user -> user.getUsername().equalsIgnoreCase(username));
     }
 }
 
