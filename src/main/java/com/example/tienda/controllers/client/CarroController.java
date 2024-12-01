@@ -1,6 +1,8 @@
 package com.example.tienda.controllers.client;
 
-import com.example.tienda.models.Producto;
+import com.example.tienda.models.Model;
+import com.example.tienda.models.ProductoCarro;
+import com.example.tienda.repositories.CarritoRepository;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.collections.FXCollections;
@@ -14,25 +16,25 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CarroController implements Initializable {
-    public TableView<Producto> carro_tbl;
+    public TableView<ProductoCarro> carro_tbl;
 
-    public TableColumn<Producto, String> nombreCol;
-    public TableColumn<Producto, String> precioCol;
-    public TableColumn<Producto, String> removeCol;
-    public TableColumn<Producto, String> cantidadCol;
-    public TableColumn<Producto, String> subtotalCol;
+    public TableColumn<ProductoCarro, String> nombreCol;
+    public TableColumn<ProductoCarro, String> precioCol;
+    public TableColumn<ProductoCarro, String> removeCol;
+    public TableColumn<ProductoCarro, String> cantidadCol;
+    public TableColumn<ProductoCarro, String> subtotalCol;
     public Label subtotal_price_lbl;
     public Label envio_price_lbl;
     public Label total_price_lbl;
     public Button comprar_btn;
-    private Producto producto = null;
+    private ProductoCarro producto = null;
 
-    ObservableList<Producto> ProductList = FXCollections.observableArrayList();
-    ArrayList<Producto> productos = new ArrayList<>();
+    private final CarritoRepository carritoRepository = new CarritoRepository();
+
+    ObservableList<ProductoCarro> ProductList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,25 +44,25 @@ public class CarroController implements Initializable {
         removeCol.setResizable(false);
         cantidadCol.setResizable(false);
         subtotalCol.setResizable(false);
-        ProductList.addAll(productos);
-        for (int i = 0; i < 20; i++) {
-            ProductList.add(new Producto("ababa" + i, 10 * i, 1, "Marca" + i, null));
-        }
+        String user = Model.getInstance().getCurrentUser().getUsername();
+        ProductList.addAll(carritoRepository.getAllProductsCarro(user));
         carro_tbl.setItems(ProductList);
-        loadDate();
+        loadData();
     }
 
-    private void loadDate() {
+    private void loadData() {
 
         // refreshTable();
 
         nombreCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        cantidadCol.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        subtotalCol.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
 
         //add cell of button edit
-        Callback<TableColumn<Producto, String>, TableCell<Producto, String>> cellFoctory = (TableColumn<Producto, String> param) -> {
+        Callback<TableColumn<ProductoCarro, String>, TableCell<ProductoCarro, String>> cellFactory = (TableColumn<ProductoCarro, String> param) -> {
             // make cell containing buttons
-            final TableCell<Producto, String> cell = new TableCell<Producto, String>() {
+            final TableCell<ProductoCarro, String> cell = new TableCell<>() {
                 @Override
                 public void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
@@ -96,7 +98,7 @@ public class CarroController implements Initializable {
 
             return cell;
         };
-        removeCol.setCellFactory(cellFoctory);
+        removeCol.setCellFactory(cellFactory);
 
         carro_tbl.setItems(ProductList);
     }

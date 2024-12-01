@@ -1,6 +1,12 @@
 package com.example.tienda.models;
 
 import javafx.beans.property.*;
+import javafx.scene.image.Image;
+
+import java.io.File;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Producto {
     private final StringProperty nombre;
@@ -46,5 +52,19 @@ public class Producto {
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    public Image getImage() {
+        Image image;
+
+        // Pidamos perdón, no permiso
+        try {
+            File file = new File(imagePath);
+            image = new Image(file.toURI().toString());
+        } catch (Exception e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "No se pudo cargar la imagen: ", e);
+            image = new Image(Objects.requireNonNull(getClass().getResource("/Img/no-image.png")).toExternalForm());
+        }
+        return image;
     }
 }
