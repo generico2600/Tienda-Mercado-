@@ -53,6 +53,19 @@ public class CarritoRepository {
         }
     }
 
+    public void reemplazarCarro(String username, List<ProductoCarro> productos) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(username), false))) {
+            for (ProductoCarro producto : productos) {
+                    writer.write(producto.getNombre() + "," +
+                            producto.getCantidad() + "," +
+                            producto.getPrecio());
+                    writer.newLine();
+            }
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error pobblando el carrito: " , e);
+        }
+    }
+
     public void limpiarCarro(String username) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(username), false))) {
             writer.write("");

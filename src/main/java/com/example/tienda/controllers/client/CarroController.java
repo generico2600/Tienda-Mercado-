@@ -41,7 +41,14 @@ public class CarroController implements Initializable {
         removeCol.setCellFactory(CarroBorrarCellFactory.forTableColumn(this));
         carro_tbl.setItems(ProductList);
         loadData();
-        comprar_btn.setOnAction(event -> {onComprarClick();});
+        comprar_btn.setOnAction(event -> onComprarClick());
+    }
+
+    public void onBorrarClick(ProductoCarro p) {
+        String username = Model.getInstance().getCurrentUser().getUsername();
+        ProductList.remove(p);
+        carritoRepository.reemplazarCarro(username, ProductList);
+        actualizarPrecios();
     }
 
     private boolean validarCompra() {
@@ -86,11 +93,7 @@ public class CarroController implements Initializable {
         total_price_lbl.setText("$0.00");
     }
 
-    private void loadData() {
-        String user = Model.getInstance().getCurrentUser().getUsername();
-        ProductList.clear();
-        ProductList.addAll(carritoRepository.getAllProductsCarro(user));
-
+    private void actualizarPrecios() {
         double subtotal = 0.0;
         double envio = 0.0;
         for (ProductoCarro pCarro : ProductList) {
@@ -101,5 +104,12 @@ public class CarroController implements Initializable {
         subtotal_price_lbl.setText(String.format("$%.2f", subtotal));
         envio_price_lbl.setText(String.format("$%.2f", envio * 10));
         total_price_lbl.setText(String.format("$%.2f", subtotal + envio));
+    }
+
+    private void loadData() {
+        String user = Model.getInstance().getCurrentUser().getUsername();
+        ProductList.clear();
+        ProductList.addAll(carritoRepository.getAllProductsCarro(user));
+        actualizarPrecios();
     }
 }

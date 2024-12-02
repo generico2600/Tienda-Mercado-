@@ -30,8 +30,7 @@ public class CarroBorrarCellFactory extends TableCell<ProductoCarro, String> {
 
             deleteIcon.setOnMouseClicked((MouseEvent event) -> {
                 ProductoCarro producto = controller.carro_tbl.getSelectionModel().getSelectedItem();
-                System.out.println(producto);
-                // Handle removal logic here
+                controller.onBorrarClick(producto);
             });
 
             HBox managebtn = new HBox(deleteIcon);
