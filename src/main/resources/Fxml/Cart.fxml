@@ -27,9 +27,9 @@
                <columns>
                   <TableColumn fx:id="removeCol" editable="false" prefWidth="40.0" resizable="false" sortable="false" />
                   <TableColumn fx:id="nombreCol" editable="false" prefWidth="439.0" resizable="false" sortable="false" text="Producto" />
-                  <TableColumn fx:id="precioCol" editable="false" prefWidth="76.0" resizable="false" sortable="false" text="Precio" />
-                  <TableColumn fx:id="cantidadCol" editable="false" resizable="false" sortable="false" text="Cantidad" />
-                  <TableColumn fx:id="subtotalCol" editable="false" prefWidth="102.0" resizable="false" sortable="false" text="Subtotal" />
+                  <TableColumn fx:id="precioCol" editable="false" prefWidth="76.0" resizable="false" sortable="false" style="-fx-alignment: center-right;" text="Precio" />
+                  <TableColumn fx:id="cantidadCol" editable="false" resizable="false" sortable="false" style="-fx-alignment: center;" text="Cantidad" />
+                  <TableColumn fx:id="subtotalCol" editable="false" prefWidth="102.0" resizable="false" sortable="false" style="-fx-alignment: center-right;" text="Subtotal" />
                   <TableColumn editable="false" prefWidth="20.0" resizable="false" sortable="false" />
                </columns>
                <columnResizePolicy>
@@ -64,7 +64,9 @@
                </GridPane>
                <Region prefHeight="34.0" prefWidth="226.0" />
                <Button fx:id="comprar_btn" mnemonicParsing="false" style="-fx-pref-width: 120; -fx-font-weight: bold;" styleClass="button_base" text="Comprar" />
-               <Region prefHeight="159.0" prefWidth="226.0" />
+               <Region prefHeight="26.0" prefWidth="226.0" />
+               <Label fx:id="carro_status_lbl" alignment="TOP_LEFT" prefHeight="57.0" prefWidth="225.0" style="-fx-font-size: 1.2em;" wrapText="true" />
+               <Region prefHeight="96.0" prefWidth="226.0" />
             </VBox>
          </VBox>
       </HBox>

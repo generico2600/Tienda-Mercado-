@@ -3,17 +3,12 @@ package com.example.tienda.controllers.client;
 import com.example.tienda.models.Model;
 import com.example.tienda.models.ProductoCarro;
 import com.example.tienda.repositories.CarritoRepository;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
+import com.example.tienda.repositories.HistorialRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,76 +25,81 @@ public class CarroController implements Initializable {
     public Label envio_price_lbl;
     public Label total_price_lbl;
     public Button comprar_btn;
-    private ProductoCarro producto = null;
 
     private final CarritoRepository carritoRepository = new CarritoRepository();
+    private final HistorialRepository historialRepository = new HistorialRepository();
+    public Label carro_status_lbl;
 
     ObservableList<ProductoCarro> ProductList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO: Usar listener u Observable (ver ViewFactory)
-        nombreCol.setResizable(false);
-        precioCol.setResizable(false);
-        removeCol.setResizable(false);
-        cantidadCol.setResizable(false);
-        subtotalCol.setResizable(false);
-        String user = Model.getInstance().getCurrentUser().getUsername();
-        ProductList.addAll(carritoRepository.getAllProductsCarro(user));
-        carro_tbl.setItems(ProductList);
-        loadData();
-    }
-
-    private void loadData() {
-
-        // refreshTable();
-
         nombreCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         precioCol.setCellValueFactory(new PropertyValueFactory<>("precio"));
         cantidadCol.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         subtotalCol.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
-
-        //add cell of button edit
-        Callback<TableColumn<ProductoCarro, String>, TableCell<ProductoCarro, String>> cellFactory = (TableColumn<ProductoCarro, String> param) -> {
-            // make cell containing buttons
-            final TableCell<ProductoCarro, String> cell = new TableCell<>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-
-                    } else {
-
-                        MaterialDesignIconView deleteIcon = new MaterialDesignIconView(MaterialDesignIcon.CLOSE_CIRCLE_OUTLINE );
-
-                        deleteIcon.getStyleClass().add("delete-icon");
-                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-                            producto = carro_tbl.getSelectionModel().getSelectedItem();
-                            // refreshTable();
-                            System.out.println(producto);
-                        });
-                        HBox managebtn = new HBox(deleteIcon);
-                        managebtn.getStyleClass().add("-fx-alignment:center;" +
-                                "-fx-background-color: transparent;\n" +
-                                "-fx-background: transparent;");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-
-                        setGraphic(managebtn);
-
-                        setText(null);
-
-                    }
-                }
-
-            };
-
-            return cell;
-        };
-        removeCol.setCellFactory(cellFactory);
-
+        removeCol.setCellFactory(CarroBorrarCellFactory.forTableColumn(this));
         carro_tbl.setItems(ProductList);
+        loadData();
+        comprar_btn.setOnAction(event -> {onComprarClick();});
+    }
+
+    private boolean validarCompra() {
+        if (ProductList.isEmpty()) {
+            carro_status_lbl.setText("Error: El carrito está vacío.");
+            return false;
+        }
+
+//        for (ProductoCarro producto : ProductList) {
+//            if (producto.getCantidad() > producto.revisarStock()) {
+//                carro_status_lbl.setText("No hay suficiente stiock para el producto: " + producto.getNombre());
+//                return false;
+//            }
+//        }
+
+        return true;
+    }
+
+    private void onComprarClick() {
+        if (!validarCompra()) {
+            return;
+        }
+
+        String username = Model.getInstance().getCurrentUser().getUsername();
+
+        // Guardar historial
+        historialRepository.savePurchase(username, ProductList);
+
+        // Actualizar stock
+        // ProductList.forEach(product -> carritoRepository.deductStock(product.getNombre(), product.getCantidad()));
+
+        // Limpiar carro
+        // carritoRepository.limpiarCarro(username);
+        // resetCampos();
+    }
+
+    private void resetCampos() {
+        ProductList.clear();
+        carro_tbl.refresh();
+        subtotal_price_lbl.setText("$0.00");
+        envio_price_lbl.setText("$0.00");
+        total_price_lbl.setText("$0.00");
+    }
+
+    private void loadData() {
+        String user = Model.getInstance().getCurrentUser().getUsername();
+        ProductList.clear();
+        ProductList.addAll(carritoRepository.getAllProductsCarro(user));
+
+        double subtotal = 0.0;
+        double envio = 0.0;
+        for (ProductoCarro pCarro : ProductList) {
+            subtotal += pCarro.getSubtotal();
+            envio++;
+        }
+
+        subtotal_price_lbl.setText(String.format("$%.2f", subtotal));
+        envio_price_lbl.setText(String.format("$%.2f", envio * 10));
+        total_price_lbl.setText(String.format("$%.2f", subtotal + envio));
     }
 }

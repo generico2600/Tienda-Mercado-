@@ -1,0 +1,66 @@
+package com.example.tienda.repositories;
+
+import com.example.tienda.Constants;
+import com.example.tienda.models.ProductoCarro;
+import com.example.tienda.models.HistorialRecord;
+
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class HistorialRepository {
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    private String getPath(String username) {
+        return Constants.HISTORY_FILE_PREFIX + username + Constants.FILE_SUFFIX;
+    }
+
+    public void savePurchase(String username, List<ProductoCarro> products) {
+        LocalDate currentDate = LocalDate.now();
+        HistorialRecord record = new HistorialRecord(currentDate, products);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(username), true))) {
+            writer.write(record.toString());
+            writer.newLine();
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error guardando historial: " , e);
+        }
+    }
+
+    public List<HistorialRecord> loadPurchaseHistory(String username) {
+        List<HistorialRecord> history = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(getPath(username)))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", 2);
+                LocalDate date = LocalDate.parse(parts[0], DATE_FORMAT);
+                String[] productData = parts[1].split(";");
+
+                List<ProductoCarro> products = new ArrayList<>();
+                for (String productEntry : productData) {
+                    if (productEntry.trim().isEmpty()) continue;
+
+                    String[] productParts = productEntry.split(",");
+                    String nombre = productParts[0];
+                    int cantidad = Integer.parseInt(productParts[1]);
+                    double precio = Double.parseDouble(productParts[2]);
+
+                    products.add(new ProductoCarro(nombre, cantidad, precio));
+                }
+
+                history.add(new HistorialRecord(date, products));
+            }
+        } catch (FileNotFoundException ignore) {
+            // No history file yet
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error carggando historial: " , e);
+        }
+
+        return history;
+    }
+}

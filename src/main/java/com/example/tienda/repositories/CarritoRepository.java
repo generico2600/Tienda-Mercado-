@@ -14,11 +14,14 @@ import java.util.logging.Logger;
 
 public class CarritoRepository {
 
+    private String getPath(String username) {
+        return Constants.CART_FILE_PREFIX + username + Constants.FILE_SUFFIX;
+    }
+
     public List<ProductoCarro> getAllProductsCarro(String username) {
-        String carritoPath = Constants.CART_FILE_PREFIX + username + Constants.CART_FILE_SUFFIX;
         List<ProductoCarro> productos = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(carritoPath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(getPath(username)))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -37,18 +40,24 @@ public class CarritoRepository {
     }
 
     public void agregarProductoAlCarrito(String username, Producto producto, int cantidad) throws IOException {
-        String carritoPath = Constants.CART_FILE_PREFIX + username + Constants.CART_FILE_SUFFIX;
-
         // Asegurarse de que el archivo existe
-        Path filePath = new File(carritoPath).toPath();
+        Path filePath = new File(getPath(username)).toPath();
         Files.createDirectories(filePath.getParent());
 
         // Añadir al final de la lista
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(carritoPath, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(username), true))) {
             writer.write(producto.getNombre().get() + "," +
                     cantidad + "," +
                     producto.getPrecio().get());
             writer.newLine();
+        }
+    }
+
+    public void limpiarCarro(String username) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPath(username), false))) {
+            writer.write("");
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error limpiando el carrito: " , e);
         }
     }
 }
