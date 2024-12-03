@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="980.0" stylesheets="@../Styles/HistoryCell.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.HistorialCellController">
+   <VBox prefHeight="149.0" prefWidth="980.0">
+      <Pane prefWidth="800.0" styleClass="top-part">
+         <Label fx:id="top_lbl" layoutX="20.0" prefHeight="42.0" prefWidth="964.0" text="Label">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Label>
+      </Pane>
+      <TableView fx:id="carro_tbl" prefHeight="111.0" prefWidth="980.0">
+         <columns>
+            <TableColumn fx:id="nombreCol" editable="false" prefWidth="439.0" resizable="false" sortable="false" text="Producto" />
+            <TableColumn fx:id="precioCol" editable="false" prefWidth="110.0" resizable="false" sortable="false" style="-fx-alignment: center-right;" text="Precio" />
+            <TableColumn fx:id="cantidadCol" editable="false" prefWidth="81.0" resizable="false" sortable="false" style="-fx-alignment: center;" text="Cantidad" />
+            <TableColumn fx:id="subtotalCol" editable="false" prefWidth="87.0" resizable="false" sortable="false" style="-fx-alignment: center-right;" text="Subtotal" />
+            <TableColumn editable="false" minWidth="0.0" prefWidth="0.0" resizable="false" sortable="false" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </VBox>
+</AnchorPane>

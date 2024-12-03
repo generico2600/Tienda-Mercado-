@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="1100.0" styleClass="bg_primary" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tienda.controllers.client.HistorialController">
+   <VBox prefHeight="540.0" prefWidth="1100.0" styleClass="content_pad">
+      <Label styleClass="tx_highlight" text="Historial de compra">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="487.0" prefWidth="1040.0" style="-fx-padding: 0 10 0 10; -fx-spacing: 10;">
+         <ScrollPane minWidth="700.0" prefHeight="414.0" prefWidth="1020.0" styleClass="scroll_box_base">
+            <GridPane fx:id="historyGrid" prefHeight="0.0" prefWidth="0.0" styleClass="transparent" />
+         </ScrollPane>
+      </HBox>
+   </VBox>
+   <stylesheets>
+      <URL value="@../Styles/Common.css" />
+   </stylesheets>
+</AnchorPane>

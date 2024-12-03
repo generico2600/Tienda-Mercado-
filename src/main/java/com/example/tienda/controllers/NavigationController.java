@@ -18,6 +18,7 @@ public class NavigationController implements Initializable {
                 case VIEW_AGREGAR_PRODUCTO -> main_canvas.setCenter(Model.getInstance().getViewFactory().getAgregarProductoView());
                 case VIEW_CARRITO -> main_canvas.setCenter(Model.getInstance().getViewFactory().getCartView());
                 case VIEW_DESEADOS -> main_canvas.setCenter(Model.getInstance().getViewFactory().getWishListView());
+                case VIEW_HISTORIAL ->  main_canvas.setCenter(Model.getInstance().getViewFactory().getHistoryView());
                 default -> main_canvas.setCenter(Model.getInstance().getViewFactory().getWipView());
             }
         }));

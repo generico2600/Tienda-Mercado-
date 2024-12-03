@@ -1,0 +1,118 @@
+.transparent {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.top-part {
+    -fx-background-color:  #abaaa7;
+    -fx-control-inner-background: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-radius: 14 14 0 0;
+    -fx-background-insets: 0;
+}
+
+.table-view {
+    -fx-background-color: #abaaa7;
+    -fx-control-inner-background: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-radius: 0 0 14 14;
+    -fx-background-insets: 0;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #000000;
+    -fx-alignment: center-left;
+}
+
+.table-cell:filled {
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: #c3c2c0;
+    -fx-background-insets: 0;
+    -fx-alignment: center-left;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #c3c2c0;
+    -fx-background-insets: 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:disabled{
+    -fx-opacity: 0.5;
+    -fx-selection-bar: transparent;
+}
+
+.table-row-cell .text{
+    -fx-font-weight:bold;
+}
+
+.table-row-cell:selected {
+    -fx-selection-bar: transparent;
+}
+
+.table-row-cell:focused .text {
+    -fx-fill: black ;
+}
+
+.table-row-cell:focused{
+    -fx-background-color: #FE346B;
+    -fx-selection-bar: transparent;
+}
+
+.table-row-cell:hover{
+    -fx-background-color: #c3c2c0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #c3c2c0;
+    -fx-background-radius: 14 14 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
+.table-view:row-selection, .placeholer {
+    -fx-background-color: #c3c2c0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 50px;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color:transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #000000;
+}
+
+.table-view :vertical,
+.table-view :horizontal {
+    -fx-background-color: transparent;
+}
+
+.table-view :horizontal .track,
+.table-view :vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background: transparent;
+    -fx-background-radius: 0em;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view :horizontal .thumb,
+.table-view :vertical .thumb {
+    -fx-background-color: #afa696;
+    -fx-background-radius: 5em;
+}
+
+.table-view > .corner {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}

@@ -87,6 +87,15 @@ public class ViewFactory {
         return catalogView;
     }
 
+    public AnchorPane getHistoryView() {
+        try {
+            return new FXMLLoader(getClass().getResource("/Fxml/Historial.fxml")).load();
+        } catch (Exception e) {
+            Logger.getLogger(ViewFactory.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return catalogView;
+    }
+
     public AnchorPane getWishListView() {
         try {
             FXMLLoader ipl = new FXMLLoader(getClass().getResource("/Fxml/WishList.fxml"));
@@ -102,7 +111,7 @@ public class ViewFactory {
 
 
     public AnchorPane getAgregarProductoView() {
-        if (agregarProductoView == null) {
+        if (true) {
             try {
                 agregarProductoView = new FXMLLoader(getClass().getResource("/Fxml/AgregarProducto.fxml")).load();
             } catch (Exception e) {
