@@ -6,9 +6,11 @@ import com.example.tienda.repositories.ProductRepository;
 import com.example.tienda.repositories.WishlistRepository;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.List;
@@ -24,6 +26,8 @@ public class WishedProductCellController implements Initializable {
 
     private final WishlistRepository wishlistRepository = new WishlistRepository();
     private final ProductRepository productRepository = new ProductRepository();
+    public Button agregar_carro_btn;
+    public ImageView producto_img;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,6 +37,7 @@ public class WishedProductCellController implements Initializable {
     public void setData(Producto p) {
         product_name_lbl.setText(p.getNombre().get());
         product_price_lbl.setText("$" + p.getPrecio().get());
+        producto_img.setImage(p.getImage());
         amount_spn.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, p.getCantidadEnStock().get()));
     }
 
