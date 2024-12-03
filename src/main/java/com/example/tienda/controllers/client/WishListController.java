@@ -1,6 +1,10 @@
 package com.example.tienda.controllers.client;
 
+import com.example.tienda.models.Model;
 import com.example.tienda.models.Producto;
+import com.example.tienda.models.ProductoCarro;
+import com.example.tienda.repositories.ProductRepository;
+import com.example.tienda.repositories.WishlistRepository;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -12,17 +16,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class WishListController implements Initializable {
-    private static final String PRODUCTS_FILE_PATH = "productos.txt";
     private List<Producto> productos;
+    private List<Producto> wishlist;
     public GridPane catalogGrid;
+
+    private final ProductRepository productRepository = new ProductRepository();
+    private final WishlistRepository wishlistRepository = new WishlistRepository();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,18 +34,30 @@ public class WishListController implements Initializable {
     }
 
     public void reloadData() {
-        productos = new ArrayList<>();
-        leerProductosDesdeArchivo();
+        productos = productRepository.getAllProducts();
+        String username = Model.getInstance().getCurrentUser().getUsername();
+        List<String> temp = wishlistRepository.getWishlist(username);
+        wishlist = new ArrayList<>();
+
+        for (String s : temp) {
+            Optional<Producto> r = productos.stream().filter(p -> p.getIdent().equalsIgnoreCase(s)).findFirst();
+            if (r.isPresent()) {
+                Producto p = r.get();
+                wishlist.add(p);
+            }
+        }
 
         int column = 0;
         int row = 0;
 
         try {
-            for (Producto producto : productos) {
+            for (Producto producto : wishlist) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/fxml/WishedProductCell.fxml"));
                 AnchorPane box = loader.load();
                 WishedProductCellController controller = loader.getController();
+                controller.delete_btn.setOnMouseClicked(event -> {controller.onBorrar(producto); reloadData();});
+                controller.productos = productos;
                 controller.setData(producto);
                 if (column == 2) {
                     column = 0;
@@ -53,22 +69,6 @@ public class WishListController implements Initializable {
             }
         } catch (Exception e) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
-        }
-    }
-
-    private void leerProductosDesdeArchivo() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(PRODUCTS_FILE_PATH))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                List<String> tags = Arrays.asList(data[4].split(";"));
-                Producto producto = new Producto(data[0], Double.parseDouble(data[1]), Integer.parseInt(data[2]), data[3], "");
-                productos.add(producto);
-            }
-        } catch (FileNotFoundException e) {
-
-        } catch (IOException e) {
-            System.out.println("Error al leer productos: " + e.getMessage());
         }
     }
 }

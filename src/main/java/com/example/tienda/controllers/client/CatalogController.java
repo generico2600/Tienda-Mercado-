@@ -4,6 +4,7 @@ import com.example.tienda.models.Model;
 import com.example.tienda.models.Producto;
 import com.example.tienda.repositories.CarritoRepository;
 import com.example.tienda.repositories.ProductRepository;
+import com.example.tienda.repositories.WishlistRepository;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -35,6 +36,8 @@ public class CatalogController implements Initializable {
 
     private final ProductRepository productRepository = new ProductRepository();
     private final CarritoRepository carritoRepository = new CarritoRepository();
+    private final WishlistRepository wishlistRepository = new WishlistRepository();
+    public Button agg_deseados_btn;
     private Producto currentProducto;
 
 
@@ -94,6 +97,12 @@ public class CatalogController implements Initializable {
         focus_prod_desc_lbl.setText(p.getMarca().get());
         picker_spn.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, p.getCantidadEnStock().get()));
         agg_carro_btn.setOnAction(event -> onAgregarCarrito());
+        agg_deseados_btn.setOnAction(event -> onAgregarDeseados());
+    }
+
+    private void onAgregarDeseados() {
+        String username = Model.getInstance().getCurrentUser().getUsername();
+        wishlistRepository.saveWishItem(username, currentProducto);
     }
 
     private void onAgregarCarrito() {

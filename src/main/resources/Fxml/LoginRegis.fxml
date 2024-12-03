@@ -25,9 +25,9 @@
          <Label layoutX="30.0" layoutY="101.0" text="Nombre de Usuario" />
          <TextField fx:id="regis_email_fld" layoutX="30.0" layoutY="118.0" prefHeight="25.0" prefWidth="243.0" styleClass="text_field" />
          <Button fx:id="regis_btn" layoutX="110.0" layoutY="320.0" mnemonicParsing="false" styleClass="ui_button" text="Registrarse" />
-      <Label layoutX="30.0" layoutY="174.0" text="Contraseña" />
       <PasswordField fx:id="regis_pass_fld" layoutX="30.0" layoutY="191.0" prefHeight="25.0" prefWidth="243.0" styleClass="text_field" />
+      <Label layoutX="30.0" layoutY="174.0" text="Contraseña" />
       <Label fx:id="regis_status_lbl" layoutX="30.0" layoutY="226.0" />
-      <CheckBox fx:id="cbIsAdmin" layoutX="30.0" layoutY="235.0" mnemonicParsing="false" text="Crear administrador" />
+      <CheckBox fx:id="cbIsAdmin" layoutX="30.0" layoutY="254.0" mnemonicParsing="false" text="Crear administrador" />
     </AnchorPane>
 </AnchorPane>
