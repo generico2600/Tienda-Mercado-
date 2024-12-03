@@ -19,6 +19,17 @@ public class HistorialRepository {
         return Constants.HISTORY_FILE_PREFIX + username + Constants.FILE_SUFFIX;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void ensureFile(String username) {
+        File file = new File(getPath(username));
+        try {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error Creando el archivo de carrito: " , e);
+        }
+    }
+
     public void savePurchase(String username, List<ProductoCarro> products) {
         LocalDate currentDate = LocalDate.now();
         HistorialRecord record = new HistorialRecord(currentDate, products);

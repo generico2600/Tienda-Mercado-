@@ -17,7 +17,7 @@
          </font>
       </Label>
       <HBox prefHeight="487.0" prefWidth="1040.0" style="-fx-padding: 0 10 0 10; -fx-spacing: 10;">
-         <ScrollPane minWidth="700.0" prefHeight="414.0" prefWidth="1020.0" styleClass="scroll_box_base">
+         <ScrollPane hbarPolicy="NEVER" minWidth="700.0" prefHeight="414.0" prefWidth="1020.0" styleClass="scroll_box_base">
             <GridPane fx:id="historyGrid" prefHeight="0.0" prefWidth="0.0" styleClass="transparent" />
          </ScrollPane>
       </HBox>
