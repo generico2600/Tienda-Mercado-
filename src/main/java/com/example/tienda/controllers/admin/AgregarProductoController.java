@@ -102,6 +102,13 @@ public class AgregarProductoController implements Initializable {
         }
 
         stock = stock_spn.getValue();
-        return new Producto(nombre, precio, stock, marca, imgPath);
+        Producto p = new Producto(nombre, precio, stock, marca, imgPath);
+
+        if (productoRepository.productExists(p.getIdent())) {
+            error_lbl.setText("El producto ya existe");
+            return null;
+        }
+
+        return p;
     }
 }
