@@ -34,6 +34,10 @@ public class Producto {
                 '}';
     }
 
+    public String getIdent(){
+        return marca.get() + "|" + nombre.get();
+    }
+
     public StringProperty getNombre() {
         return nombre;
     }
@@ -66,5 +70,9 @@ public class Producto {
             image = new Image(Objects.requireNonNull(getClass().getResource("/Img/no-image.png")).toExternalForm());
         }
         return image;
+    }
+
+    public void setCantidadEnStockProperty(Integer i) {
+        cantidadEnStock.set(i);
     }
 }

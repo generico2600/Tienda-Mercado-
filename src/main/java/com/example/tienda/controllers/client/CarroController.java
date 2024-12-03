@@ -1,9 +1,11 @@
 package com.example.tienda.controllers.client;
 
 import com.example.tienda.models.Model;
+import com.example.tienda.models.Producto;
 import com.example.tienda.models.ProductoCarro;
 import com.example.tienda.repositories.CarritoRepository;
 import com.example.tienda.repositories.HistorialRepository;
+import com.example.tienda.repositories.ProductRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -11,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CarroController implements Initializable {
@@ -25,9 +29,11 @@ public class CarroController implements Initializable {
     public Label envio_price_lbl;
     public Label total_price_lbl;
     public Button comprar_btn;
+    private List<Producto> productos_temp = null;
 
     private final CarritoRepository carritoRepository = new CarritoRepository();
     private final HistorialRepository historialRepository = new HistorialRepository();
+    private final ProductRepository productRepository = new ProductRepository();
     public Label carro_status_lbl;
 
     ObservableList<ProductoCarro> ProductList = FXCollections.observableArrayList();
@@ -57,12 +63,22 @@ public class CarroController implements Initializable {
             return false;
         }
 
-//        for (ProductoCarro producto : ProductList) {
-//            if (producto.getCantidad() > producto.revisarStock()) {
-//                carro_status_lbl.setText("No hay suficiente stiock para el producto: " + producto.getNombre());
-//                return false;
-//            }
-//        }
+        productos_temp = productRepository.getAllProducts();
+
+        for (ProductoCarro pCarro : ProductList) {
+            Optional<Producto> r = productos_temp.stream().filter(p -> p.getIdent().equalsIgnoreCase(pCarro.getIdent())).findFirst();
+            if (r.isEmpty()){
+                carro_status_lbl.setText("El producto no existe: " + pCarro.getNombre());
+                return false;
+            }
+
+            Producto p = r.get();
+            if (pCarro.getCantidad() > p.getCantidadEnStock().get()) {
+                carro_status_lbl.setText("No hay suficiente stock para el producto: " + pCarro.getNombre());
+                return false;
+            }
+            p.setCantidadEnStockProperty(p.getCantidadEnStock().get() - pCarro.getCantidad());
+        }
 
         return true;
     }
@@ -78,11 +94,11 @@ public class CarroController implements Initializable {
         historialRepository.savePurchase(username, ProductList);
 
         // Actualizar stock
-        // ProductList.forEach(product -> carritoRepository.deductStock(product.getNombre(), product.getCantidad()));
+        productRepository.replaceProducts(productos_temp);
 
         // Limpiar carro
-        // carritoRepository.limpiarCarro(username);
-        // resetCampos();
+        carritoRepository.limpiarCarro(username);
+        resetCampos();
     }
 
     private void resetCampos() {

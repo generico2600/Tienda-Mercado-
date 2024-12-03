@@ -68,4 +68,18 @@ public class ProductRepository {
         int dotIndex = fileName.lastIndexOf('.');
         return (dotIndex > 0) ? fileName.substring(dotIndex) : "";
     }
+
+    public void replaceProducts(List<Producto> productos) {
+        try (BufferedWriter ignored = new BufferedWriter(new FileWriter(Constants.PRODUCTS_FILE_PATH, false))) {
+            for (Producto producto : productos) {
+                saveProduct(producto, producto.getImagePath());
+            }
+        } catch (IOException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error pobblando productos: " , e);
+        }
+    }
+
+    public boolean productExists(String id) {
+        return getAllProducts().stream().anyMatch(producto -> producto.getIdent().equals(id));
+    }
 }

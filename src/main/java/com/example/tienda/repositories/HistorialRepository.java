@@ -47,10 +47,11 @@ public class HistorialRepository {
 
                     String[] productParts = productEntry.split(",");
                     String nombre = productParts[0];
-                    int cantidad = Integer.parseInt(productParts[1]);
-                    double precio = Double.parseDouble(productParts[2]);
+                    String marca = productParts[1];
+                    int cantidad = Integer.parseInt(productParts[2]);
+                    double precio = Double.parseDouble(productParts[3]);
 
-                    products.add(new ProductoCarro(nombre, cantidad, precio));
+                    products.add(new ProductoCarro(nombre, marca, cantidad, precio));
                 }
 
                 history.add(new HistorialRecord(date, products));
