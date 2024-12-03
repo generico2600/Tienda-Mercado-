@@ -1,7 +1,5 @@
 package com.example.tienda.models;
 
-import com.example.pruebas.Producto;
-
 import java.util.ArrayList;
 import java.util.List;
 
